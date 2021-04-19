@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Blog</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_pack_tag 'application', media: 'all' %>
+    <%= javascript_pack_tag 'application' %>
+  </head>
+
+  <body>
+    <div class="bg-primary text-white text-center mb-4 p-4">
+      <%= link_to root_path, class: 'text-white' do %>
+        <h1 class='display-4'>Treina Linux</h1>
+      <% end %>
+      <p class='lead'>Ajudando estudantes e profissionais</p>
+    </div>
+    <div class='container'>
+      <%= yield %>
+    </div>
+
+    <footer class="bg-primary text-white text-center mt-5 p-4">
+      Copyright @ Treina Linux <%= Date.current.year %>
+    </footer>
+  </body>
+</html>
