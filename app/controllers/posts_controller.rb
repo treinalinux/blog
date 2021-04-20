@@ -7,6 +7,10 @@ class PostsController < ApplicationController
     @posts = Post.order(created_at: :desc)
   end
 
+  def search
+    @posts = Post.search(search_params[:q])
+  end
+
   # GET /posts/1 or /posts/1.json
   def show
     @comments = @post.comments.order(created_at: :desc)
@@ -31,6 +35,7 @@ class PostsController < ApplicationController
         format.html { redirect_to @post, notice: "Artigo criado com sucesso." }
         format.json { render :show, status: :created, location: @post }
       else
+        flash.now[:alert] = @post.errors.full_messages.to_sentence
         format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @post.errors, status: :unprocessable_entity }
       end
@@ -68,5 +73,9 @@ class PostsController < ApplicationController
     # Only allow a list of trusted parameters through.
     def post_params
       params.require(:post).permit(:title, :author, :body)
+    end
+
+    def search_params
+      params.permit(:q)
     end
 end
