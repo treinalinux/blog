@@ -18,6 +18,12 @@
       <p class='lead'>Ajudando estudantes e profissionais</p>
     </div>
     <div class='container'>
+      <% flash.each do |type, message| %>
+        <div class="alert alert-<%= type == 'alert' ? 'danger' : 'success' %> alert-dismissible fade show" role="alert">
+          <%= message %>
+          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>    
+      <% end %>
       <%= yield %>
     </div>
 
