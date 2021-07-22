@@ -105,7 +105,8 @@ vim config/webpacker.yml
 extract_css: true
 ```
 
-**Done, end config bootstrap on Rails 6**
+*Done, end config bootstrap on Rails 6*
+
 ---
 
 ## Config database postgresql remoto
