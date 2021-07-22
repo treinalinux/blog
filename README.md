@@ -2,7 +2,7 @@
 
 **This README is not finished yet, it will soon be finished.**
 
-### Create Project
+## Create Project
 
 ```bash
 rails new blog -d postgresql --skip-turbolinks
@@ -77,8 +77,10 @@ vim app/javascript/src/application.css
 @import 'bootstrap';
 ```
 
+**Change stylesheet_link_tag for stylesheet_pack_tag**
+
 ```bash
-vim app/views/pages/index.html.erb 
+vim app/views/layouts/application.html.erb
 ```
 
 ```ruby
