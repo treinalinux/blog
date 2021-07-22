@@ -1,18 +1,39 @@
-# README
+# Project blog
 
-Create Project blog
+**This README is not finished yet, it will soon be finished.**
 
-- rails new blog -d postgresql --skip-turbolinks
+### Create Project
 
-Config bootstrap
-- yarn add bootstrap jquery popper.js
-- rm -rf app/assets/stylesheets
+```bash
+rails new blog -d postgresql --skip-turbolinks
+```
 
-- vim app/assets/config/manifest.js 
-    remove line:
-    //= link_directory ../stylesheets .css 
+## Config bootstrap on Rails 6
 
-- vim config/webpack/environment.js
+```bash
+yarn add bootstrap jquery popper.js
+```
+
+**remove folder stylesheets**
+
+```bash
+rm -rf app/assets/stylesheets
+```
+
+
+```bash
+vim app/assets/config/manifest.js
+```
+
+**remove line:**
+
+```javascript
+//= link_directory ../stylesheets .css
+```
+
+```bash
+vim config/webpack/environment.js
+```
 
 ```javascript
 const { environment } = require('@rails/webpacker')
@@ -33,7 +54,9 @@ environment.plugins.prepend(
 module.exports = environment
 ```
 
-- vim app/javascript/packs/application.js
+```bash
+vim app/javascript/packs/application.js
+```
 
 ```javascript
 import "bootstrap"
@@ -42,17 +65,25 @@ import "../src/application.css"
 
 ```
 
-- mkdir app/javascript/src
+```bash
+mkdir app/javascript/src
+```
 
-- vim app/javascript/src/application.css
+```
+vim app/javascript/src/application.css
+```
+
 ```css
 @import 'bootstrap';
 ```
 
-- vim app/views/pages/index.html.erb 
+```bash
+vim app/views/pages/index.html.erb 
+```
+
 ```ruby
 # Change:
-<%= stylesheet_link_tag 'application', media: 'all' %>                        
+<%= stylesheet_link_tag 'application', media: 'all' %>
 # For:
 <%= stylesheet_pack_tag 'application', media: 'all' %> 
 
@@ -61,14 +92,25 @@ import "../src/application.css"
       <%= yield %>
     </div>
 ```
-- vim config/webpacker.yml
 
-```yml
-# extract_css: false                                                          
-extract_css: true 
+
+```bash
+vim config/webpacker.yml
 ```
 
-- vim config/database.yml
+```yml
+# extract_css: false
+extract_css: true
+```
+
+**Done, end config bootstrap on Rails 6**
+---
+
+## Config database postgresql remoto
+
+```
+vim config/database.yml
+```
 
 ```yml
   default: &default
@@ -77,31 +119,16 @@ extract_css: true
   username: postgres
   host: 192.168.0.189
 ```
-- rails db:create 
+
+## Create database
+
+```bash
+- rails db:create
+
 - rails generate scaffold post title:string author:string body:text
+
 - rails generate model comment post:references author body:text
-- rails db:migrate 
 
+- rails db:migrate
+```
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
